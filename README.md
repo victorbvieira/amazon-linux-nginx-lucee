@@ -44,6 +44,9 @@ special thanks
 [Pete Freitag](https://github.com/pfreitag)
 Special thanks for creating the [ubuntu-nginx-lucee](https://github.com/foundeo/ubuntu-nginx-lucee) repository which was used as a base to adapt Ubunto commands for Amazon Linux and Nginx update
 
+[Andreas](https://github.com/andreasRu)
+Thanks Andreas, for the hours you spent together with me configuring the CommandBox in a Rasperbey, this was the beginning for this script
+
 [Daniel Mejia](https://github.com/webmandman)
 That with a lot of patience and persistence we discovered that the Commandbox did not run in java 17, thanks for the help
 
