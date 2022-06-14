@@ -9,17 +9,18 @@ What does it do?
 1. **Updates Amazon Linux** - simply runs `yum update -y` and `yum upgrade -y`
 2. **Downloads Lucee** - uses curl to download lucee jars from BitBucket places jars in `"https://release.lucee.org/rest/update/provider/loader/$lucee_version`
 3. **Installs & Configures Tomcat 9** - download tomcat9 updates the `web.xml` `server.xml` and `catalina.properties` to configure Lucee servlets and mod_cfml Valve.  (Tomcat/Lucee run on port 8080 by default).
-4. **JVM/Tomcat9** - Check services.
-5. **Installs & Configures nginx** - runs `yum install nginx -y` to install nginx. Creates a web root directory. Creates a `lucee.config` file so you can just `include lucee.config` for any site that uses CFML
-6. **Set Default Lucee Admin Password** - uses cfconfig to set the Lucee server context password and default web context password. If environment variable ADMIN_PASSWORD exists that is used, otherwise a random password is set.  
+4. Run `install.sh` - make sure you are root or sudo and run `./install.sh` you may need to `chmod u+x install.sh` to give execute permissions to the script.
+5. **JVM/Tomcat9** - Check services.
+6. **Installs & Configures nginx** - runs `yum install nginx -y` to install nginx. Creates a web root directory. Creates a `lucee.config` file so you can just `include lucee.config` for any site that uses CFML
+7. **Set Default Lucee Admin Password** - uses cfconfig to set the Lucee server context password and default web context password. If environment variable ADMIN_PASSWORD exists that is used, otherwise a random password is set.  
 
 Take a look in the `scripts/` subfolder to see the script for each step.
 
 How do I run it?
 ----------------
 
-1. **Download this repository** - 
-2. **Extract repository** - 
+1. **Download this repository** - `wget https://github.com/victorbvieira/amazon-linux-nginx-lucee/archive/refs/heads/main.zip`
+2. **Extract repository** - `unzip main.zip`
 3. **Configuration** - You can either Edit the `install.sh` and change any configuration options such as the Lucee Version or JVM version - or you can use environment variables (see below).
 4. **Run install.sh** - make sure you are root or sudo and run `./install.sh` you may need to `chmod u+x install.sh` to give execute permissions to the script.
 
@@ -39,13 +40,21 @@ After making changes you need to restart or reload nginx:
 
 	sudo service nginx restart
 
+
+common problems
+==============
+Commandbox error installing
+Solution:
+During the installation process, java 17 can be installed and activated automatically, to fix it, run the `alternatives --config java` command and select the java 11 option
+
+
 special thanks
 ==============
 [Pete Freitag](https://github.com/pfreitag)
 Special thanks for creating the [ubuntu-nginx-lucee](https://github.com/foundeo/ubuntu-nginx-lucee) repository which was used as a base to adapt Ubunto commands for Amazon Linux and Nginx update
 
 [Andreas](https://github.com/andreasRu)
-Thanks Andreas, for the hours you spent together with me configuring the CommandBox in a Rasperbey, this was the beginning for this script
+Thanks Andreas, for the hours you spent together with me configuring the CommandBox in a Raspberry PI, this was the beginning for this script
 
 [Daniel Mejia](https://github.com/webmandman)
 That with a lot of patience and persistence we discovered that the Commandbox did not run in java 17, thanks for the help
